@@ -38,10 +38,16 @@ import {
   FONTS,
   TEXTURES,
   fontFamily,
+  type FontLanguage,
   type TextAlign,
   type TextLayer,
   type TextureType,
 } from '@/lib/text-layer'
+
+function detectLang(key: string): FontLanguage {
+  return FONTS.find((f) => f.key === key)?.language ?? 'en'
+}
+
 
 interface ToolBarProps {
   layers: TextLayer[]
@@ -251,12 +257,27 @@ function ToolContent({
       return (
         <div className="space-y-3">
           <ToolHeading>Typeface</ToolHeading>
+          <ToggleGroup
+            type="single"
+            value={detectLang(layer.fontKey)}
+            onValueChange={(v) => {
+              if (!v) return
+              const first = FONTS.find((f) => f.language === (v as FontLanguage))
+              if (first) onChange({ fontKey: first.key })
+            }}
+            className="w-full justify-start"
+          >
+            <ToggleGroupItem value="en" className="flex-1">English</ToggleGroupItem>
+            <ToggleGroupItem value="my" className="flex-1" style={{ fontFamily: "'Pyidaungsu', sans-serif" }}>
+              မြန်မာစာ
+            </ToggleGroupItem>
+          </ToggleGroup>
           <Select value={layer.fontKey} onValueChange={(v) => onChange({ fontKey: v })}>
             <SelectTrigger className="w-full">
               <SelectValue />
             </SelectTrigger>
             <SelectContent>
-              {FONTS.map((f) => (
+              {FONTS.filter((f) => f.language === detectLang(layer.fontKey)).map((f) => (
                 <SelectItem key={f.key} value={f.key}>
                   <span style={{ fontFamily: fontFamily(f.key) }}>{f.label}</span>
                 </SelectItem>
@@ -265,6 +286,7 @@ function ToolContent({
           </Select>
         </div>
       )
+
     case 'size':
       return (
         <div>
