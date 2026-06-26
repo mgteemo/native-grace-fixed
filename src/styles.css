@@ -40,7 +40,7 @@
 }
 @font-face {
   font-family: 'Myanmar Taunggyi';
-  src: url('/__l5e/assets-v1/82e9c8fc-4c29-498e-ac01-39266fd48194/myanmar-taunggyi.ttf') format('truetype');
+  src: url('/fonts/tgi.otf') format('truetype');
   font-display: swap;
 }
 @font-face {
