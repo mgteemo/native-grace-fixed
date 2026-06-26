@@ -16,9 +16,7 @@ export function Editor() {
   const [exporting, setExporting] = useState(false)
   const canvasRef = useRef<HTMLDivElement>(null)
 
-  useEffect(() => {
-    registerBurmeseFonts()
-  }, [])
+
 
 
   const selected = layers.find((l) => l.id === selectedId) ?? null
