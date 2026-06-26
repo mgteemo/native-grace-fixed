@@ -1,6 +1,6 @@
-import { useCallback, useEffect, useRef, useState } from 'react'
+import { useCallback, useRef, useState } from 'react'
 import { toPng } from 'html-to-image'
-import { registerBurmeseFonts } from '@/lib/burmese-fonts'
+
 
 import { EditorHeader } from './editor-header'
 import { UploadZone } from './upload-zone'
