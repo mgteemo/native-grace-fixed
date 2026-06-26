@@ -17,10 +17,16 @@ import {
   FONTS,
   TEXTURES,
   fontFamily,
+  type FontLanguage,
   type TextAlign,
   type TextLayer,
   type TextureType,
 } from '@/lib/text-layer'
+
+function detectLanguage(key: string): FontLanguage {
+  return FONTS.find((f) => f.key === key)?.language ?? 'en'
+}
+
 
 export type ControlCategory = 'text' | 'color' | 'effects' | 'transform'
 
@@ -46,13 +52,31 @@ export function ControlsPanel({ layer, category, onChange }: ControlsPanelProps)
 
         <Section title="Font">
           <div className="space-y-2">
+            <Label className="text-sm font-medium">Language</Label>
+            <ToggleGroup
+              type="single"
+              value={detectLanguage(layer.fontKey)}
+              onValueChange={(v) => {
+                if (!v) return
+                const first = FONTS.find((f) => f.language === (v as FontLanguage))
+                if (first) onChange({ fontKey: first.key })
+              }}
+              className="w-full justify-start"
+            >
+              <ToggleGroupItem value="en" className="flex-1">English</ToggleGroupItem>
+              <ToggleGroupItem value="my" className="flex-1" style={{ fontFamily: "'Pyidaungsu', sans-serif" }}>
+                မြန်မာစာ
+              </ToggleGroupItem>
+            </ToggleGroup>
+          </div>
+          <div className="space-y-2">
             <Label className="text-sm font-medium">Typeface</Label>
             <Select value={layer.fontKey} onValueChange={(v) => onChange({ fontKey: v })}>
               <SelectTrigger className="w-full">
                 <SelectValue />
               </SelectTrigger>
               <SelectContent>
-                {FONTS.map((f) => (
+                {FONTS.filter((f) => f.language === detectLanguage(layer.fontKey)).map((f) => (
                   <SelectItem key={f.key} value={f.key}>
                     <span style={{ fontFamily: fontFamily(f.key) }}>{f.label}</span>
                   </SelectItem>
@@ -60,6 +84,7 @@ export function ControlsPanel({ layer, category, onChange }: ControlsPanelProps)
               </SelectContent>
             </Select>
           </div>
+
 
           <SliderField
             label="Size"
