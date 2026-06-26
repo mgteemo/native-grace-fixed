@@ -5,7 +5,7 @@
 /* Burmese (မြန်မာ) fonts — bundled, served from CDN */
 @font-face {
   font-family: 'Pyidaungsu';
-  src: url('/__l5e/assets-v1/3781ba90-b9e7-4749-9544-38a3575815f1/pyidaungsu.ttf') format('truetype');
+  src: url('/fonts/Myanmar Taunggyi.ttf.otf') format('truetype');
   font-display: swap;
 }
 @font-face {
