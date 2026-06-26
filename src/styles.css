@@ -35,12 +35,12 @@
 }
 @font-face {
   font-family: 'Myanmar Khittar';
-  src: url('https://github.com/mgteemo/native-grace/blob/main/src/public/fonts/tgi.otf') format('opentype');
+  src: url('/fonts/tgi.otf') format('opentype');
   font-display: swap;
 }
 @font-face {
   font-family: 'Myanmar Taunggyi';
-  src: url('/fonts/tgi.otf') format('opentype');
+  src: url('/fonts/Myanmar Taunggyi.ttf.otf') format('opentype');
   font-display: swap;
 }
 @font-face {
