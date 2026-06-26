@@ -2,6 +2,64 @@
 @source "../src";
 @import "tw-animate-css";
 
+/* Burmese (မြန်မာ) fonts — bundled, served from CDN */
+@font-face {
+  font-family: 'Pyidaungsu';
+  src: url('/__l5e/assets-v1/3781ba90-b9e7-4749-9544-38a3575815f1/pyidaungsu.ttf') format('truetype');
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Myanmar April';
+  src: url('/__l5e/assets-v1/bee874fb-3256-496e-bb95-04f4a2f47cba/myanmar-april.ttf') format('truetype');
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Myanmar Ayar Wazo';
+  src: url('/__l5e/assets-v1/6fdbe0ad-d790-4a97-8103-e04a30bbb399/myanmar-ayar-wazo.ttf') format('truetype');
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Myanmar Ayar Typewriter';
+  src: url('/__l5e/assets-v1/7cb2f087-2df6-4fc7-bdca-a3fb4994dbf1/myanmar-ayar-tyepwriter.ttf') format('truetype');
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Myanmar Handwriting';
+  src: url('/__l5e/assets-v1/535851e7-b0ef-424f-8844-5fc0c021fb94/myanmar-handwriting.ttf') format('truetype');
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Myanmar Jojar';
+  src: url('/__l5e/assets-v1/69becec1-c110-4be1-a765-1afc6afe5272/myanmar-jojar.ttf') format('truetype');
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Myanmar Khittar';
+  src: url('/__l5e/assets-v1/2e89ba63-c701-4152-b792-86881a46af72/myanmar-khittar.ttf') format('truetype');
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Myanmar Taunggyi';
+  src: url('/__l5e/assets-v1/82e9c8fc-4c29-498e-ac01-39266fd48194/myanmar-taunggyi.ttf') format('truetype');
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Myanmar Waitzar';
+  src: url('/__l5e/assets-v1/7100c114-2a19-4636-8e96-b9cbbd5e9c39/myanmar-waitzar.ttf') format('truetype');
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Keng Tawng';
+  src: url('/__l5e/assets-v1/3406cd31-e8f7-4e21-939c-af24d4a90c24/keng-tawng03.ttf') format('truetype');
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Choco Cooky';
+  src: url('/__l5e/assets-v1/05294c0c-3bbc-4fc7-b38a-67e1cf6089b8/choco-cooky.ttf') format('truetype');
+  font-display: swap;
+}
+
+
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {
