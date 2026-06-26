@@ -30,30 +30,52 @@ export interface TextLayer {
   skewY: number
 }
 
+export type FontLanguage = 'en' | 'my'
+
 export interface FontOption {
   key: string
   label: string
   cssVar: string
-  category: 'Sans' | 'Serif' | 'Display' | 'Script'
+  category: 'Sans' | 'Serif' | 'Display' | 'Script' | 'Burmese'
+  language: FontLanguage
 }
 
-export const FONTS: FontOption[] = [
-  { key: 'inter', label: 'Inter', cssVar: 'var(--font-inter)', category: 'Sans' },
-  { key: 'poppins', label: 'Poppins', cssVar: 'var(--font-poppins)', category: 'Sans' },
-  { key: 'montserrat', label: 'Montserrat', cssVar: 'var(--font-montserrat)', category: 'Sans' },
-  { key: 'oswald', label: 'Oswald', cssVar: 'var(--font-oswald)', category: 'Sans' },
-  { key: 'bebas', label: 'Bebas Neue', cssVar: 'var(--font-bebas)', category: 'Display' },
-  { key: 'anton', label: 'Anton', cssVar: 'var(--font-anton)', category: 'Display' },
-  { key: 'playfair', label: 'Playfair Display', cssVar: 'var(--font-playfair)', category: 'Serif' },
-  { key: 'lobster', label: 'Lobster', cssVar: 'var(--font-lobster)', category: 'Script' },
-  { key: 'pacifico', label: 'Pacifico', cssVar: 'var(--font-pacifico)', category: 'Script' },
-  { key: 'caveat', label: 'Caveat', cssVar: 'var(--font-caveat)', category: 'Script' },
+import { BURMESE_FONTS } from './burmese-fonts'
+
+const ENGLISH_FONTS: FontOption[] = [
+  { key: 'inter', label: 'Inter', cssVar: 'var(--font-inter)', category: 'Sans', language: 'en' },
+  { key: 'poppins', label: 'Poppins', cssVar: 'var(--font-poppins)', category: 'Sans', language: 'en' },
+  { key: 'montserrat', label: 'Montserrat', cssVar: 'var(--font-montserrat)', category: 'Sans', language: 'en' },
+  { key: 'oswald', label: 'Oswald', cssVar: 'var(--font-oswald)', category: 'Sans', language: 'en' },
+  { key: 'bebas', label: 'Bebas Neue', cssVar: 'var(--font-bebas)', category: 'Display', language: 'en' },
+  { key: 'anton', label: 'Anton', cssVar: 'var(--font-anton)', category: 'Display', language: 'en' },
+  { key: 'playfair', label: 'Playfair Display', cssVar: 'var(--font-playfair)', category: 'Serif', language: 'en' },
+  { key: 'lobster', label: 'Lobster', cssVar: 'var(--font-lobster)', category: 'Script', language: 'en' },
+  { key: 'pacifico', label: 'Pacifico', cssVar: 'var(--font-pacifico)', category: 'Script', language: 'en' },
+  { key: 'caveat', label: 'Caveat', cssVar: 'var(--font-caveat)', category: 'Script', language: 'en' },
 ]
+
+const BURMESE_FONT_OPTIONS: FontOption[] = BURMESE_FONTS.map((f) => ({
+  key: f.key,
+  label: f.label,
+  cssVar: `'${f.family}'`,
+  category: 'Burmese' as const,
+  language: 'my' as const,
+}))
+
+export const FONTS: FontOption[] = [...ENGLISH_FONTS, ...BURMESE_FONT_OPTIONS]
+
+export function fontsByLanguage(lang: FontLanguage): FontOption[] {
+  return FONTS.filter((f) => f.language === lang)
+}
 
 export function fontFamily(key: string): string {
   const f = FONTS.find((f) => f.key === key)
-  return f ? `${f.cssVar}, sans-serif` : 'sans-serif'
+  if (!f) return 'sans-serif'
+  const fallback = f.language === 'my' ? "'Pyidaungsu', 'Padauk', sans-serif" : 'sans-serif'
+  return `${f.cssVar}, ${fallback}`
 }
+
 
 export const TEXTURES: Record<TextureType, { label: string; gradient: string | null }> = {
   none: { label: 'Solid', gradient: null },
