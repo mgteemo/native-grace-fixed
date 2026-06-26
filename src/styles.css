@@ -5,7 +5,7 @@
 /* Burmese (မြန်မာ) fonts — bundled, served from CDN */
 @font-face {
   font-family: 'Pyidaungsu';
-  src: url('/fonts/Myanmar Taunggyi.ttf.otf') format('truetype');
+  src: url('/fonts/Myanmar Taunggyi.ttf.otf') format('opentype');
   font-display: swap;
 }
 @font-face {
@@ -35,12 +35,12 @@
 }
 @font-face {
   font-family: 'Myanmar Khittar';
-  src: url('/__l5e/assets-v1/2e89ba63-c701-4152-b792-86881a46af72/myanmar-khittar.ttf') format('truetype');
+  src: url('https://github.com/mgteemo/native-grace/blob/main/src/public/fonts/tgi.otf') format('opentype');
   font-display: swap;
 }
 @font-face {
   font-family: 'Myanmar Taunggyi';
-  src: url('/fonts/tgi.otf') format('truetype');
+  src: url('/fonts/tgi.otf') format('opentype');
   font-display: swap;
 }
 @font-face {
