@@ -1,4 +1,4 @@
-import { Download, ImageUp, Loader2, Type } from 'lucide-react'
+import { Download, ImageUp, Loader2 } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 
 interface EditorHeaderProps {
@@ -20,9 +20,7 @@ export function EditorHeader({
       style={{ paddingTop: 'env(safe-area-inset-top)' }}
     >
       <div className="flex items-center gap-2.5">
-        <div className="flex size-9 items-center justify-center rounded-2xl bg-primary text-primary-foreground shadow-sm">
-          <Type className="size-5" />
-        </div>
+        <img src="/logo.png" alt="Logo" className="size-9 rounded-2xl shadow-sm object-cover" />
         <div className="leading-tight">
           <p className="text-sm font-bold tracking-tight">
             Text on <span className="text-primary">Photo</span>
